@@ -1,0 +1,6 @@
+framework module BZipCompression {
+  umbrella header "BZipCompression-umbrella.h"
+
+  export *
+  module * { export * }
+}

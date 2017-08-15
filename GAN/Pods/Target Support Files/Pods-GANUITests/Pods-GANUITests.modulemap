@@ -1,0 +1,6 @@
+framework module Pods_GANUITests {
+  umbrella header "Pods-GANUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

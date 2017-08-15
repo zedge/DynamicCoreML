@@ -1,0 +1,12 @@
+PODS:
+  - BZipCompression (1.0.2)
+
+DEPENDENCIES:
+  - BZipCompression (~> 1.0.0)
+
+SPEC CHECKSUMS:
+  BZipCompression: e0f96508e60eb93b5f5d4c7de1eb3dd0ac4f9ae9
+
+PODFILE CHECKSUM: 9de12f90ffd779826127e080ea268104462bb7e9
+
+COCOAPODS: 1.2.1
