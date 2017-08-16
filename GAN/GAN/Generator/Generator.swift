@@ -12,12 +12,12 @@ import CoreML
 
 class Generator {
     
-    let model: mnistStock?
+    var model: mnistStock?
     
     init(_ urlOfModel: URL) {
         self.model = try? mnistStock(contentsOf: urlOfModel)
     }
-    
+
     /**
      * Generate some random data that can be used as input for the MLModel.
      */
@@ -44,6 +44,14 @@ class Generator {
             return generated?.output1
         }
         return nil
+    }
+
+
+    /**
+     * Replace model
+     */
+    func setModel(with anotherModel: URL){
+        self.model = try? mnistStock(contentsOf: anotherModel)
     }
 }
 
