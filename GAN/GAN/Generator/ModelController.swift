@@ -10,50 +10,56 @@ import Foundation
 import CoreML
 import BZipCompression
 
+
 /**
  * AI model controller
  **/
 class ModelController{
     
     let fileManager = FileManager.default
+
     let modelPath: URL
     let generator: Generator
     
-    init(modelPath: URL, generator: Generator) {
+    init(at modelPath: URL, with generator: Generator) {
         self.modelPath = modelPath
         self.generator = generator
+        
+    }
+    
+    func truncateModel(with newWeightAddress: URL) {
+        Tools.replaceFile(at: modelPath.appendingPathComponent("model.espresso.weights"), withFileAt: newWeightAddress)
+        generator.setModel(with: modelPath)
     }
     
     func decompressModel(with newModelAddress: URL){
         print("Starting decompression using BZip2")
-        if let url = Bundle(for: Generator.self).url(forResource: "mnistNew.tar", withExtension: "bz2") {
-            print("Found BZ2")
-            do {
-                let data = try Data(contentsOf: url)
-                print("Got data", url, data.count)
-                let tarData = try BZipCompression.decompressedData(with: data)
-                try FileManager.default.createFilesAndDirectories(at: modelPath, withTarData: tarData, progress: { (progress) in
-                    print(progress)
-                })
-            }
-            catch {
-                print("Failed to coerce Data")
-            }
+        do {
+            let data = try Data(contentsOf: newModelAddress)
+            print("Got data", newModelAddress, data.count)
+            let tarData = try BZipCompression.decompressedData(with: data)
+
+            print("Unpacking to " + modelPath.absoluteString)
+            let tempPath = fileManager.urls(for: .cachesDirectory, in: .userDomainMask).first!
+            try fileManager.createFilesAndDirectories(at: tempPath, withTarData: tarData, progress: { (progress) in
+                print(progress)
+            })
+            print("Finished decompressing")
+            
+            Tools.replaceFile(at: modelPath, withFileAt: tempPath.appendingPathComponent("mnistNew.mlmodelc"))
+            generator.setModel(with: modelPath)
         }
-        generator.setModel(with: modelPath)
+        catch {
+            print("Failed to coerce Data")
+        }
     }
     
     func compileModel(with newModelAddress: URL) {
         if let compiledAddress = try? MLModel.compileModel(at: newModelAddress){
-            replaceModel(with: compiledAddress)
+            Tools.replaceFile(at: modelPath, withFileAt: compiledAddress)
+            generator.setModel(with: modelPath)
         }
     }
     
-    private func replaceModel(with newModel: URL) {
-        do {
-            try fileManager.copyItem(at: newModel, to: modelPath)
-            generator.setModel(with: modelPath) // Refresh
-        }
-        catch {}
-    }
+
 }

@@ -21,9 +21,11 @@
 		600FBD431EFABABC00E09A64 /* Generator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600FBD421EFABABC00E09A64 /* Generator.swift */; };
 		600FBD451EFABC7100E09A64 /* DeviceInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600FBD441EFABC7100E09A64 /* DeviceInformation.swift */; };
 		87A5C2981F433591000AD81F /* ModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A5C2971F433591000AD81F /* ModelController.swift */; };
-		87A5C29A1F44395D000AD81F /* ImageTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A5C2991F44395D000AD81F /* ImageTools.swift */; };
-		87A5C29E1F445C66000AD81F /* NSFileManager+Tar.m in Resources */ = {isa = PBXBuildFile; fileRef = 87A5C29C1F445C65000AD81F /* NSFileManager+Tar.m */; };
+		87A5C29A1F44395D000AD81F /* Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A5C2991F44395D000AD81F /* Tools.swift */; };
+		87A5C29F1F45DCE0000AD81F /* NSFileManager+Tar.m in Sources */ = {isa = PBXBuildFile; fileRef = 87A5C29C1F445C65000AD81F /* NSFileManager+Tar.m */; };
 		87C94797336ECD67DCB57F1C /* Pods_GANUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49B87C7C619793F0E4C12E55 /* Pods_GANUITests.framework */; };
+		87EBBE2C1F46D31000B023C6 /* mnistnew.weights in Resources */ = {isa = PBXBuildFile; fileRef = 87EBBE2A1F46D2C900B023C6 /* mnistnew.weights */; };
+		87EBBE2E1F46D8C200B023C6 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EBBE2D1F46D8C200B023C6 /* MainView.swift */; };
 		972047D61EBF243810B25BFF /* Pods_GAN.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 075873BE377A15B610DD8908 /* Pods_GAN.framework */; };
 		B3360231C963A51E4F577E0E /* Pods_GANTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9087AC0968A883D1EB176D68 /* Pods_GANTests.framework */; };
 /* End PBXBuildFile section */
@@ -69,10 +71,12 @@
 		600FBD421EFABABC00E09A64 /* Generator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Generator.swift; sourceTree = "<group>"; };
 		600FBD441EFABC7100E09A64 /* DeviceInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInformation.swift; sourceTree = "<group>"; };
 		87A5C2971F433591000AD81F /* ModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelController.swift; sourceTree = "<group>"; };
-		87A5C2991F44395D000AD81F /* ImageTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTools.swift; sourceTree = "<group>"; };
+		87A5C2991F44395D000AD81F /* Tools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tools.swift; sourceTree = "<group>"; };
 		87A5C29B1F445C64000AD81F /* GAN-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GAN-Bridging-Header.h"; sourceTree = "<group>"; };
 		87A5C29C1F445C65000AD81F /* NSFileManager+Tar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+Tar.m"; sourceTree = "<group>"; };
 		87A5C29D1F445C65000AD81F /* NSFileManager+Tar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+Tar.h"; sourceTree = "<group>"; };
+		87EBBE2A1F46D2C900B023C6 /* mnistnew.weights */ = {isa = PBXFileReference; lastKnownFileType = file; path = mnistnew.weights; sourceTree = "<group>"; };
+		87EBBE2D1F46D8C200B023C6 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		9087AC0968A883D1EB176D68 /* Pods_GANTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GANTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9465576F21DE536544BFD7B0 /* Pods-GANTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GANTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GANTests/Pods-GANTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A5EC36F634B8DA17CF26EB80 /* Pods-GANTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GANTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GANTests/Pods-GANTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -143,18 +147,17 @@
 		600FBD101EFAB9E000E09A64 /* GAN */ = {
 			isa = PBXGroup;
 			children = (
-				05F2EC331F4308550039B90B /* mnistNew.tar.bz2 */,
 				600FBD111EFAB9E000E09A64 /* AppDelegate.swift */,
-				87A5C29D1F445C65000AD81F /* NSFileManager+Tar.h */,
-				87A5C29C1F445C65000AD81F /* NSFileManager+Tar.m */,
+				87EBBE2B1F46D2DF00B023C6 /* Extensions */,
 				600FBD131EFAB9E000E09A64 /* ViewController.swift */,
+				87EBBE2D1F46D8C200B023C6 /* MainView.swift */,
 				600FBD411EFABAA900E09A64 /* Generator */,
 				600FBD151EFAB9E000E09A64 /* Main.storyboard */,
 				600FBD181EFAB9E000E09A64 /* Assets.xcassets */,
 				600FBD1A1EFAB9E000E09A64 /* LaunchScreen.storyboard */,
 				600FBD1D1EFAB9E000E09A64 /* Info.plist */,
 				600FBD441EFABC7100E09A64 /* DeviceInformation.swift */,
-				87A5C2991F44395D000AD81F /* ImageTools.swift */,
+				87A5C2991F44395D000AD81F /* Tools.swift */,
 				87A5C29B1F445C64000AD81F /* GAN-Bridging-Header.h */,
 			);
 			path = GAN;
@@ -181,12 +184,23 @@
 		600FBD411EFABAA900E09A64 /* Generator */ = {
 			isa = PBXGroup;
 			children = (
+				05F2EC331F4308550039B90B /* mnistNew.tar.bz2 */,
+				87EBBE2A1F46D2C900B023C6 /* mnistnew.weights */,
 				05F2EC2A1F42EDC50039B90B /* mnistNew.mlmodel */,
 				05F2EC2B1F42EDC50039B90B /* mnistStock.mlmodel */,
 				600FBD421EFABABC00E09A64 /* Generator.swift */,
 				87A5C2971F433591000AD81F /* ModelController.swift */,
 			);
 			path = Generator;
+			sourceTree = "<group>";
+		};
+		87EBBE2B1F46D2DF00B023C6 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				87A5C29D1F445C65000AD81F /* NSFileManager+Tar.h */,
+				87A5C29C1F445C65000AD81F /* NSFileManager+Tar.m */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		AA64F7338FA4CB9190F2291B /* Pods */ = {
@@ -316,7 +330,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				87A5C29E1F445C66000AD81F /* NSFileManager+Tar.m in Resources */,
+				87EBBE2C1F46D31000B023C6 /* mnistnew.weights in Resources */,
 				05F2EC361F4310D00039B90B /* mnistNew.mlmodel in Resources */,
 				600FBD1C1EFAB9E000E09A64 /* LaunchScreen.storyboard in Resources */,
 				600FBD191EFAB9E000E09A64 /* Assets.xcassets in Resources */,
@@ -484,14 +498,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				87A5C29F1F45DCE0000AD81F /* NSFileManager+Tar.m in Sources */,
 				05F2EC2D1F42EDC50039B90B /* mnistStock.mlmodel in Sources */,
 				600FBD451EFABC7100E09A64 /* DeviceInformation.swift in Sources */,
+				87EBBE2E1F46D8C200B023C6 /* MainView.swift in Sources */,
 				600FBD431EFABABC00E09A64 /* Generator.swift in Sources */,
 				600FBD141EFAB9E000E09A64 /* ViewController.swift in Sources */,
 				600FBD121EFAB9E000E09A64 /* AppDelegate.swift in Sources */,
 				87A5C2981F433591000AD81F /* ModelController.swift in Sources */,
 				05F2EC2C1F42EDC50039B90B /* mnistNew.mlmodel in Sources */,
-				87A5C29A1F44395D000AD81F /* ImageTools.swift in Sources */,
+				87A5C29A1F44395D000AD81F /* Tools.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -660,6 +676,12 @@
 				INFOPLIST_FILE = GAN/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LLVM_LTO = YES;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					"\"BZipCompression\"",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = net.zedge.GAN;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "GAN/GAN-Bridging-Header.h";
@@ -680,6 +702,12 @@
 				INFOPLIST_FILE = GAN/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LLVM_LTO = YES;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					"\"BZipCompression\"",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = net.zedge.GAN;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "GAN/GAN-Bridging-Header.h";
