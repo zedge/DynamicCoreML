@@ -86,6 +86,13 @@ class Tools {
         return withUnsafeBytes(of: &value) { Array($0) }
     }
     
+    class func timeIt(code: () -> Void) {
+        let time = Date().timeIntervalSince1970
+        code()
+        let timing = UInt64((Date().timeIntervalSince1970 - time) * 1000)
+        print("Run time: \(timing) ms")
+    }
+    
     class func replaceFile(at path: URL, withFileAt otherPath: URL) {
         do {
             Tools.deleteFile(atPath: path)

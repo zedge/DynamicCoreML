@@ -60,20 +60,25 @@ class ViewController: UIViewController {
     }
     
     @objc func compileModel() {
-        modelController.compileModel(with: Bundle.main.url(forResource: "mnistNew", withExtension: "mlmodel")!)
+        Tools.timeIt {
+            modelController.compileModel(with: Bundle.main.url(forResource: "mnistNew", withExtension: "mlmodel")!)
+        }
         generateImage(generatorIn: generator)
     }
     
     @objc func decompressModel() {
-        modelController.decompressModel(with: Bundle.main.url(forResource: "mnistNew.tar", withExtension: "bz2")!)
+        Tools.timeIt {
+            modelController.decompressModel(with: Bundle.main.url(forResource: "mnistNew.tar", withExtension: "bz2")!)
+        }
         generateImage(generatorIn: generator)
     }
     
     @objc func truncateModel() {
-        modelController.truncateModel(with: Bundle.main.url(forResource: "mnistnew", withExtension: "weights")!)
+        Tools.timeIt {
+            modelController.truncateModel(with: Bundle.main.url(forResource: "mnistnew", withExtension: "weights")!)
+        }
         generateImage(generatorIn: generator)
     }
-
     
     @objc func generate() {
         generateImage(generatorIn: generator)
